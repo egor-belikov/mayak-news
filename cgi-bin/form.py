@@ -3,10 +3,7 @@ import cgi
 import html
 
 form = cgi.FieldStorage()
-text1 = form.getfirst("TEXT_1", "не задано")
-text2 = form.getfirst("TEXT_2", "не задано")
-text1 = html.escape(text1)
-text2 = html.escape(text2)
+text1 = html.escape(form.getfirst("TEXT_1", "undefined"))
 
 print("Content-type: text/html\n")
 print("""<!DOCTYPE HTML>
@@ -18,8 +15,7 @@ print("""<!DOCTYPE HTML>
         <body>""")
 
 print("<h1>Обработка данных форм!</h1>")
-print("<p>TEXT_1: {}</p>".format(text1))
-print("<p>TEXT_2: {}</p>".format(text2))
+print("{}".format(text1))
 
 print("""</body>
         </html>""")
